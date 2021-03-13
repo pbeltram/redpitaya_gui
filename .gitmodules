@@ -1,0 +1,7 @@
+#[submodule "lnx/u-boot/u-boot-rpt"]
+#	path = lnx/u-boot/u-boot-rpt
+#	url = git@github.com:pbeltram/u-boot-rpt.git
+#[submodule "lnx/linux/linux-rpt"]
+#	path = lnx/linux/linux-rpt
+#	url = git@github.com:pbeltram/linux-rpt.git
+
