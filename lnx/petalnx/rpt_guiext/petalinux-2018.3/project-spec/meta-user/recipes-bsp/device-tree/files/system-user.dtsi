@@ -1,0 +1,115 @@
+/include/ "system-conf.dtsi"
+
+/ {
+  model = "Zynq RedPitaya Board";
+  compatible = "xlnx,zynq-7000";
+};
+
+/ {
+  chosen {
+    bootargs = "console=ttyPS0,115200 earlyprintk clk_ignore_unused cma=192M root=/dev/mmcblk0p2 rw rootwait";
+  };
+};
+
+/ {
+  amba_pl: amba_pl {
+    #address-cells = <1>;
+    #size-cells = <1>;
+    compatible = "simple-bus";
+    interrupt-parent = <&intc>;
+    ranges ;
+
+    axi_vdma_0: axivdma@4000f000 {
+      compatible = "xlnx,axi-vdma-6.3", "xlnx,axi-vdma-1.00.a";
+      /*compatible = "xlnx,axi-vdma-1.00.a";*/
+      #dma-cells = <1>;
+      #address-cells = <1>;
+      #size-cells = <1>;
+      reg = <0x4000f000 0x1000>;
+      xlnx,flush-fsync = <0x1>;
+      xlnx,num-fstores = <0x3>;
+      xlnx,addrwidth = <0x20>;
+      clock-names = "s_axi_lite_aclk", "m_axi_mm2s_aclk", "m_axis_mm2s_aclk";
+      clocks = <&clkc 15>, <&clkc 18>, <&clkc 18>;
+      /*clock-names = "s_axi_lite_aclk", "m_axi_mm2s_aclk";*/
+      /*clocks = <&clkc 15>, <&clkc 18>;*/
+      dma-ranges = <0x00000000 0x00000000 0x20000000>;
+      interrupt-names = "mm2s_introut";
+      interrupts = <0 31 4>;
+      dma-channel@4000f000 {
+        compatible = "xlnx,axi-vdma-mm2s-channel";
+        interrupts = <0 31 4>;
+        xlnx,datawidth = <0x20>;
+        xlnx,device-id = <0x1>;
+        xlnx,genlock-mode;
+        /*xlnx,include-dre ;*/
+      };
+    };
+
+    rpt_gui@0 {
+      compatible = "rpt,rpt-gui-1.0";
+      dmas = <&axi_vdma_0 0>;
+      dma-names = "video";
+      clocks = <&clkc 18>;
+      edid-i2c = <&i2c1>;
+      width = <1280>;
+      height = <1024>;
+    };
+
+  };
+};
+
+/* ETH PHY */
+&gem0 {
+    local-mac-address = [00 0a 35 00 01 22];
+    phy-handle = <&ethernet_phy>;
+    phy-reset-active-low;
+
+    ethernet_phy: ethernet-phy@1 {
+        reg = <1>;
+        device_type = "ethernet-phy";
+    };
+};
+
+/* USB PHY */
+/{
+    usb_phy0: usb_phy@0 {
+        #phy-cells = <0>;
+        compatible = "usb-nop-xceiv";
+    };
+};
+
+&usb0 {
+    dr_mode = "host";
+    //dr_mode = "peripheral";
+    usb-phy = <&usb_phy0>;
+    xlnx,phy-reset-gpio = <&gpio0 48 0>;
+};
+
+&i2c0 {
+    eeprom@50 {
+        compatible = "24c64";
+        size= <8192>;
+        pagesize = <32>;
+        reg = <0x50>;
+    };
+};
+
+&spi0 {
+    spidev@0 {
+        compatible="rpt,spidev";
+        reg =<0>;
+        spi-max-frequency = <10000000>;
+    };
+    spidev@1 {
+        compatible="rpt,spidev";
+        reg =<1>;
+        spi-max-frequency = <10000000>;
+    };
+    spidev@2 {
+        compatible="rpt,spidev";
+        reg =<2>;
+        spi-max-frequency = <10000000>;
+    };
+};
+
