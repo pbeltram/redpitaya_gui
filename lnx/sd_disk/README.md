@@ -2,7 +2,7 @@
 
 ---
 
-###SD card layout (4GByte SD card /dev/sdf example)
+### SD card layout (4GByte SD card /dev/sdf example)
 ```
 Device     Boot   Start     End Sectors  Size Id Type
 /dev/sdf1  *       2048  526335  524288  256M  c W95 FAT32 (LBA)
@@ -28,7 +28,7 @@ Min size: 512MByte.
 
 ---
 
-###Copy Boot files to SD card  
+### Copy Boot files to SD card  
 
 ```cp ./rpt_guiext/BOOT.BIN /media/$USER/boot/```  
 ```cp ./rpt_guiext/image.ub /media/$USER/boot/```  
@@ -37,7 +37,7 @@ or via scp utility to ```rpt``` host:
 ```scp ./rpt_guiext/BOOT.BIN root@rpt:/run/media/mmcblk0p1/```  
 ```scp ./rpt_guiext/image.ub root@rpt:/run/media/mmcblk0p1/```  
 
-###Copy Linux rootfs to SD card
+### Copy Linux rootfs to SD card  
 ```sudo umount /dev/sdf2```  
 ```sudo mkfs.ext4 /dev/sdf2```  
 ```sudo e2label /dev/sdf2 rootfs```  
