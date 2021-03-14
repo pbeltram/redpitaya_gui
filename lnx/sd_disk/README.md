@@ -38,11 +38,11 @@ or via scp utility to ```rpt``` host:
 ```scp ./rpt_guiext/image.ub root@rpt:/run/media/mmcblk0p1/```  
 
 ### Copy Linux rootfs to SD card  
-**NOTE: Double check your SD card device partition path (```/dev/sdX2```)!**
-**NOTE: Format will destroy data on ```/dev/sdX2``` partition!**
-**NOTE: Commands executed below can destroy your PC disk data, if directed to wrong device partition!**
-**NOTE: If you don't know what you are doing, than don't do it!**
-**Execution of commands below is your solely responsability. You have been warned!**
+**NOTE: Double check your SD card device partition path (```/dev/sdX2```)!**  
+**NOTE: Format will destroy data on ```/dev/sdX2``` partition!**  
+**NOTE: Commands executed below can destroy your PC disk data, if directed to wrong device partition!**  
+**NOTE: If you don't know what you are doing, than don't do it!**  
+**Execution of commands below is your solely responsability. You have been warned!**  
 
 ```sudo umount /dev/sdX2```  
 ```sudo mkfs.ext4 /dev/sdX2```  
