@@ -19,6 +19,12 @@
     interrupt-parent = <&intc>;
     ranges ;
 
+
+    ip_perfmon: axi_perf_mon@43c00000 {
+      interrupts = <0 30 4>;
+      xlnx,id-filter-32bit;
+    };
+
     axi_vdma_0: axivdma@4000f000 {
       compatible = "xlnx,axi-vdma-6.3", "xlnx,axi-vdma-1.00.a";
       /*compatible = "xlnx,axi-vdma-1.00.a";*/
@@ -46,8 +52,10 @@
       };
     };
 
-    rpt_gui@0 {
-      compatible = "rpt,rpt-gui-1.0";
+    rpt_guiext@0 {
+      compatible = "rpt,rpt-guiext-1.0";
+      interrupts = <0 29 4>;
+      reg = <0x40000000 0x10000>;
       dmas = <&axi_vdma_0 0>;
       dma-names = "video";
       clocks = <&clkc 18>;
