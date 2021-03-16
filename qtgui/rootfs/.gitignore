@@ -1,0 +1,11 @@
+sysroots/
+environment-setup-cortexa9hf-neon-xilinx-linux-gnueabi
+site-config-cortexa9hf-neon-xilinx-linux-gnueabi
+version-cortexa9hf-neon-xilinx-linux-gnueabi
+
+#
+# git files that we don't want to ignore even it they are dot-files
+#
+!.gitignore
+!.mailmap
+
