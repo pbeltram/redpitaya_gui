@@ -1,0 +1,57 @@
+diff -Naur qt-everywhere-opensource-src-4.8.7.org/examples/examples.pro qt-everywhere-opensource-src-4.8.7/examples/examples.pro
+--- qt-everywhere-opensource-src-4.8.7.org/examples/examples.pro	2015-05-07 16:14:38.000000000 +0200
++++ qt-everywhere-opensource-src-4.8.7/examples/examples.pro	2020-03-10 11:25:33.172651000 +0100
+@@ -75,3 +75,8 @@
+ sources.path = $$[QT_INSTALL_EXAMPLES]
+ INSTALLS += sources
+ 
++#Add extra clean for linker lst files:
++extraclean.commands = find . -type f -name \"*.lst\" -exec rm -v {} \\;
++distclean.depends = extraclean
++QMAKE_EXTRA_TARGETS += distclean extraclean
++
+diff -Naur qt-everywhere-opensource-src-4.8.7.org/mkspecs/qws/linux-arm-gnueabi-g++/qmake.conf qt-everywhere-opensource-src-4.8.7/mkspecs/qws/linux-arm-gnueabi-g++/qmake.conf
+--- qt-everywhere-opensource-src-4.8.7.org/mkspecs/qws/linux-arm-gnueabi-g++/qmake.conf	2015-05-07 16:14:41.000000000 +0200
++++ qt-everywhere-opensource-src-4.8.7/mkspecs/qws/linux-arm-gnueabi-g++/qmake.conf	2020-03-11 20:47:43.635968000 +0100
+@@ -8,14 +8,22 @@
+ include(../../common/qws.conf)
+ 
+ # modifications to g++.conf
+-QMAKE_CC                = arm-none-linux-gnueabi-gcc
+-QMAKE_CXX               = arm-none-linux-gnueabi-g++
+-QMAKE_LINK              = arm-none-linux-gnueabi-g++
+-QMAKE_LINK_SHLIB        = arm-none-linux-gnueabi-g++
++QMAKE_CC                = arm-linux-gnueabihf-gcc
++QMAKE_CXX               = arm-linux-gnueabihf-g++
++QMAKE_LINK              = arm-linux-gnueabihf-g++
++QMAKE_LINK_SHLIB        = arm-linux-gnueabihf-g++
+ 
+ # modifications to linux.conf
+-QMAKE_AR                = arm-none-linux-gnueabi-ar cqs
+-QMAKE_OBJCOPY           = arm-none-linux-gnueabi-objcopy
+-QMAKE_STRIP             = arm-none-linux-gnueabi-strip
++QMAKE_AR                = arm-linux-gnueabihf-ar cqs
++QMAKE_OBJCOPY           = arm-linux-gnueabihf-objcopy
++QMAKE_STRIP             = arm-linux-gnueabihf-strip
++
++QMAKE_CFLAGS="${CROSS_COMPILE_CFLAGS} -I$(ZYNQ_QT_INSTALL)/include -DZYNQ"
++QMAKE_CXXFLAGS="${CROSS_COMPILE_CPPFLAGS} -Wno-psabi -I$(ZYNQ_QT_INSTALL)/include -DZYNQ"
++QMAKE_LFLAGS="-L$(ZYNQ_QT_INSTALL)/lib"
++
++QMAKE_CFLAGS += -mfpu=neon -v
++QMAKE_CXXFLAGS += -mfpu=neon -v
++QMAKE_LFLAGS += -Xlinker -Map=$@.lst -Xlinker --cref
+ 
+ load(qt_config)
+diff -Naur qt-everywhere-opensource-src-4.8.7.org/src/plugins/accessible/widgets/itemviews.cpp qt-everywhere-opensource-src-4.8.7/src/plugins/accessible/widgets/itemviews.cpp
+--- qt-everywhere-opensource-src-4.8.7.org/src/plugins/accessible/widgets/itemviews.cpp	2015-05-07 16:14:48.000000000 +0200
++++ qt-everywhere-opensource-src-4.8.7/src/plugins/accessible/widgets/itemviews.cpp	2020-03-09 15:56:27.325767000 +0100
+@@ -393,7 +393,7 @@
+     QModelIndex index = view()->model()->index(0, column, view()->rootIndex());
+     if (!index.isValid() || view()->selectionMode() & QAbstractItemView::NoSelection)
+         return false;
+-    view()->selectionModel()->select(index, QItemSelectionModel::Columns & QItemSelectionModel::Deselect);
++    view()->selectionModel()->select(index, static_cast<QItemSelectionModel::SelectionFlags>(QItemSelectionModel::Columns & QItemSelectionModel::Deselect));
+     return true;
+ }
+ 
