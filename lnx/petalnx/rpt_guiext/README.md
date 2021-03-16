@@ -20,4 +20,10 @@
 ```petalinux-package --boot --fsbl ./images/linux/zynq_fsbl.elf --fpga ./images/linux/system.bit --u-boot ./images/linux/u-boot.elf --force --output ./images/linux/BOOT.BIN```  
 
 ---
+### Build and install developement SDK
+```petalinux-build --sdk```  
+```petalinux-package --sysroot --sdk --dir ../../../../qtgui/rootfs/```  
+
+---
+
 
