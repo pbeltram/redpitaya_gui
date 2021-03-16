@@ -1,7 +1,17 @@
+*.[oa]
+*~
+*.lst
+
+# project specific stuff
+Makefile
+qt-oscilloscope
+/Debug/
+/Release/
 
 #
 # git files that we don't want to ignore even it they are dot-files
 #
 !.gitignore
 !.mailmap
+
 
