@@ -6,23 +6,19 @@
 [Qt4.8 Download archive](https://download.qt.io/archive/qt/4.8/4.8.7/qt-everywhere-opensource-src-4.8.7.tar.gz)  
 ```d990ee66bf7ab0c785589776f35ba6ad  qt-everywhere-opensource-src-4.8.7.tar.gz```  
 
-Unpack it:
-```tar -xzvf ./qt-everywhere-opensource-src-4.8.7.tar.gz -C ./build/```   
+Unpack it: ```tar -xzvf ./qt-everywhere-opensource-src-4.8.7.tar.gz -C ./build/```   
 
-Apply patch:  
-```cat ./patches/qt-4.8.7.patch | patch -Nu -p1 -d ./build/qt-everywhere-opensource-src-4.8.7/```  
+Apply patch: ```cat ./patches/qt-4.8.7.patch | patch -Nu -p1 -d ./build/qt-everywhere-opensource-src-4.8.7/```  
 
 ---
 ### Download Qwt source
 
-[Qwt 6.1.4 Download](https://sourceforge.net/projects/qwt/files/qwt/6.1.4/qwt-6.1.4.zip/download)
+[Qwt 6.1.4 Download](https://sourceforge.net/projects/qwt/files/qwt/6.1.4/qwt-6.1.4.zip/download)  
 ```94cba1069f972706e676ea816582e5ce  qwt-6.1.4.zip```  
 
-Unpack it:
-```unzip ./qwt-6.1.4.zip -d ./build/```   
+Unpack it: ```unzip ./qwt-6.1.4.zip -d ./build/```   
 
-Apply patch:  
-```cat ./patches/qwt-6.1.4.patch | patch -Nu -p1 -d ./build/qwt-6.1.4/```  
+Apply patch: ```cat ./patches/qwt-6.1.4.patch | patch -Nu -p1 -d ./build/qwt-6.1.4/```  
 
 ---
 ### Cross compile Qt runtime
