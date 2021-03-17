@@ -15,4 +15,8 @@
 **NOTE:** Place ```R401``` or ```R402``` (power source select).  
 
 ---
+### PCB placed board:
+![RPT GUI Extension placed PCB](./placed_pcb.jpg)  
+
+---
 
