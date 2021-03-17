@@ -16,7 +16,7 @@
 ```petalinux-build```  
 
 ---
-### Create BOOT.bin  
+### Create BOOT.BIN  
 ```petalinux-package --boot --fsbl ./images/linux/zynq_fsbl.elf --fpga ./images/linux/system.bit --u-boot ./images/linux/u-boot.elf --force --output ./images/linux/BOOT.BIN```  
 
 ---
