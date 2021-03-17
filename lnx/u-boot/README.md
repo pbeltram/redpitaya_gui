@@ -1,8 +1,11 @@
-**Work in progress ...**  
 
 ---
 
-###U-Boot petalinux build  
+### U-Boot petalinux build  
+
+This directory is configured in Petalinux build for U-Boot build.  
+Original git repo is forked from ```Xilinx/u-boot-xlxn``` git repo.  
+Changes for RedPitaya GUI Extension are made and kept in ```rpt_guiext_devel``` branch (default branch).  
 
 **NOTE**  
 Always start with HDF file import to petalinux build (all over again build, clean build) to get properly configured U-Boot.  
