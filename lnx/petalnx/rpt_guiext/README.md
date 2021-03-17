@@ -1,4 +1,3 @@
-**Work in progress...**  
 
 ---
 ### Petalinux build environment setup  
