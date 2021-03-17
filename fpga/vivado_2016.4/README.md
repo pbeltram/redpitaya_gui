@@ -1,3 +1,3 @@
 ---
-TODO: Setting up directory structures.
+TODO: Demo FPGA design with GUI Extension IP core.  
 ---

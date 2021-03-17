@@ -1,3 +1,3 @@
 ---
-TODO: Setting up directory structures.
+TODO: IP core for GUI Extension.  
 ---
