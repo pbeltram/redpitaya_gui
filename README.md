@@ -1,4 +1,3 @@
-**Work in progress ...**
 
 ![Alt text](./rpt_guiext.jpg?raw=true "RedPitaya GUI Extension")  
 
