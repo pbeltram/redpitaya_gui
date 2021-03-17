@@ -1,4 +1,3 @@
-**Work in progress ...**  
 
 ---
 ### Download Qt source
