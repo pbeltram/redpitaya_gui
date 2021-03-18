@@ -17,7 +17,6 @@ File is generated with Petalinux build.
 **rpt-guiext.ko**  
 This is RedPitaya GUI Extension Linux device driver provided in binary form as loadable Linux kernel device driver.  
 File mus be copied on RedPitaya in ```/opt``` directory. Script ```zynqconfig.sh``` will start this driver.  
-TODO: Provide driver binary file.  
 
 **startup.sh**  
 This is startup script invoked automatically at Linux startup.  
