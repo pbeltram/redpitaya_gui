@@ -25,6 +25,18 @@
       xlnx,id-filter-32bit;
     };
 
+    rpt_guiext@40000000 {
+      compatible = "rpt,rpt-guiext-1.0";
+      interrupts = <0 29 4>;
+      reg = <0x40000000 0xf000>;
+      dmas = <&axi_vdma_0 0>;
+      dma-names = "video";
+      clocks = <&clkc 18>;
+      edid-i2c = <&i2c1>;
+      width = <1280>;
+      height = <1024>;
+    };
+
     axi_vdma_0: axivdma@4000f000 {
       compatible = "xlnx,axi-vdma-6.3", "xlnx,axi-vdma-1.00.a";
       /*compatible = "xlnx,axi-vdma-1.00.a";*/
@@ -50,18 +62,6 @@
         xlnx,genlock-mode;
         /*xlnx,include-dre ;*/
       };
-    };
-
-    rpt_guiext@0 {
-      compatible = "rpt,rpt-guiext-1.0";
-      interrupts = <0 29 4>;
-      reg = <0x40000000 0x10000>;
-      dmas = <&axi_vdma_0 0>;
-      dma-names = "video";
-      clocks = <&clkc 18>;
-      edid-i2c = <&i2c1>;
-      width = <1280>;
-      height = <1024>;
     };
 
   };
