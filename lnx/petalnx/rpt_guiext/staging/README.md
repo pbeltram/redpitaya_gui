@@ -8,4 +8,6 @@ NOTE: FPGA design is **demo** version which will cycle between GUI output and te
 In GUI mode Qt GUI application is displayed.  
 In test pattern mode it will display Red, Green, Blue, White test picture.  
 
+FPGA block design:  
+![Block design](./rpt_guiext_top.id_2103172.png)  
 ---

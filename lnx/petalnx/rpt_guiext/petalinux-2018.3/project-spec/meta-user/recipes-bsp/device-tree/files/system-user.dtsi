@@ -19,48 +19,27 @@
     interrupt-parent = <&intc>;
     ranges ;
 
-
     ip_perfmon: axi_perf_mon@43c00000 {
-      interrupts = <0 30 4>;
       xlnx,id-filter-32bit;
     };
 
-    rpt_guiext@40000000 {
+    guiext@40000000 {
       compatible = "rpt,rpt-guiext-1.0";
-      interrupts = <0 29 4>;
-      reg = <0x40000000 0xf000>;
-      dmas = <&axi_vdma_0 0>;
+      dmas = <&ip_vdma 0>;
       dma-names = "video";
-      clocks = <&clkc 18>;
       edid-i2c = <&i2c1>;
       width = <1280>;
       height = <1024>;
     };
 
-    axi_vdma_0: axivdma@4000f000 {
+    ip_vdma: dma@40010000 {
       compatible = "xlnx,axi-vdma-6.3", "xlnx,axi-vdma-1.00.a";
-      /*compatible = "xlnx,axi-vdma-1.00.a";*/
       #dma-cells = <1>;
       #address-cells = <1>;
       #size-cells = <1>;
-      reg = <0x4000f000 0x1000>;
-      xlnx,flush-fsync = <0x1>;
-      xlnx,num-fstores = <0x3>;
-      xlnx,addrwidth = <0x20>;
-      clock-names = "s_axi_lite_aclk", "m_axi_mm2s_aclk", "m_axis_mm2s_aclk";
-      clocks = <&clkc 15>, <&clkc 18>, <&clkc 18>;
-      /*clock-names = "s_axi_lite_aclk", "m_axi_mm2s_aclk";*/
-      /*clocks = <&clkc 15>, <&clkc 18>;*/
       dma-ranges = <0x00000000 0x00000000 0x20000000>;
-      interrupt-names = "mm2s_introut";
-      interrupts = <0 31 4>;
-      dma-channel@4000f000 {
-        compatible = "xlnx,axi-vdma-mm2s-channel";
-        interrupts = <0 31 4>;
-        xlnx,datawidth = <0x20>;
+      dma-channel@40010000 {
         xlnx,device-id = <0x1>;
-        xlnx,genlock-mode;
-        /*xlnx,include-dre ;*/
       };
     };
 
