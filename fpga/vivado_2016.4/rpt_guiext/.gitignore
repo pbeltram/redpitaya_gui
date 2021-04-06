@@ -1,3 +1,11 @@
+rpt_guiext.cache/
+rpt_guiext.hw/
+rpt_guiext.ip_user_files/
+rpt_guiext.runs/
+rpt_guiext.sim/
+rpt_guiext.srcs/
+rpt_guiext.sdk/
+*.str
 
 #
 # git files that we don't want to ignore even it they are dot-files

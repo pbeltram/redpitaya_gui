@@ -1,0 +1,15 @@
+guiext_v1.0.cache/
+guiext_v1.0.hw/
+guiext_v1.0.ip_user_files/
+guiext_v1.0.runs/
+guiext_v1.0.sim/
+guiext_v1.0.srcs/
+guiext_v1.0.sdk/
+*.str
+
+#
+# git files that we don't want to ignore even it they are dot-files
+#
+!.gitignore
+!.mailmap
+
