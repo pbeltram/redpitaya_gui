@@ -12,12 +12,12 @@ Example is to have ``redpitaya_gui`` git rep checkout somewhere into ``$HOME/git
 Type this TCL commands to set up project name, chip part and project directory:  
 ```set project_part "xc7z010clg400-1"```  
 ```set project_name "rpt_guiext"```  
-```cd ${project_name}```
-```pwd```
+```cd ${project_name}```  
+```pwd```  
 
 Create Vivado project file:  
-```set SrcDir "."```
-```set RunDir "."```
+```set SrcDir "."```  
+```set RunDir "."```  
 ```create_project $project_name $RunDir -part $project_part -force```  
 
 Set IP repository path to this git repo checkout:  
