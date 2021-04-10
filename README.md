@@ -18,7 +18,4 @@ Part of project are also external Linux kernel and U-Boot git forks, so don't fo
 
 ```git submodule update --init --recursive```  
 
-NOTE:  
-I have working RedPitaya Qt GUI system and I am transferring files and HowTo's to this git repo. It is work in progress, until this note is removed :-).
-
 WBR Primoz
