@@ -6,6 +6,7 @@ guiext_v1.0.sim/
 guiext_v1.0.srcs/
 guiext_v1.0.sdk/
 *.str
+.*
 
 #
 # git files that we don't want to ignore even it they are dot-files

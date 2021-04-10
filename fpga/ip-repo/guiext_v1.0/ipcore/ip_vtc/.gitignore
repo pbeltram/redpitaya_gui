@@ -1,0 +1,6 @@
+# All is generated
+*
+# IP core config file
+!*.xci
+!.gitignore
+
