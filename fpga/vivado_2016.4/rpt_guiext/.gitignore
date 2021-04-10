@@ -6,6 +6,7 @@ rpt_guiext.sim/
 rpt_guiext.srcs/
 rpt_guiext.sdk/
 *.str
+*.xpr
 
 #
 # git files that we don't want to ignore even it they are dot-files
